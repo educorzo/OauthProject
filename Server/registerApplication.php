@@ -1,4 +1,5 @@
 <?php
+//Register one application and it returns the token and token secret
     // Initialize OAuth server & store
     require_once 'oauth-php/library/OAuthServer.php';
     require_once 'oauth-php/library/OAuthStore.php';

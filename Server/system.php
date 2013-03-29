@@ -152,6 +152,10 @@ $API->get('/require-auth/:name', function ($name) {
 	    }
 	}
 });
+
+/*
+*Returns in JSON format a list with all the recipes in the Data Base
+*/
 $API->get('/list', function(){
               $host="localhost"; // Host name
               $username="edjocorz";//"tooshilt"; // Mysql username
@@ -170,7 +174,10 @@ $API->get('/list', function(){
           // Output JSON
           echo json_encode($rows);
 });
-    
+
+/*
+*Returns in a JSON Format a recipe with the name "title"
+*/
 $API->get('/recipe/:title',function($title){
           $host="localhost"; // Host name
           $username="edjocorz";//"tooshilt"; // Mysql username
