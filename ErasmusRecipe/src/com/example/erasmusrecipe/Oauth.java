@@ -23,6 +23,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -297,10 +298,10 @@ public class Oauth {
 		try {
 			// To encode the title and the recipe is necessary or we will have
 			// problems with spaces and other characters
-			titleCode = URLEncoder.encode(title, "UTF-8");
-			titleCode = URLEncoder.encode(titleCode, "UTF-8");
-			recipeCode = URLEncoder.encode(recipe, "UTF-8");
-			recipeCode = URLEncoder.encode(recipeCode, "UTF-8");
+			titleCode = URLEncoder.encode(title,"UTF-8");
+			titleCode = URLEncoder.encode(titleCode,"UTF-8");
+			recipeCode = URLEncoder.encode(recipe,"UTF-8");
+			recipeCode = URLEncoder.encode(recipeCode,"UTF-8");
 			// Construct the baseString in order to do the signature
 			baseString = "POST&" + URLEncoder.encode(URL, "UTF-8") + "&";
 			parameters = "oauth_consumer_key=" + CONSUMER_KEY + "&oauth_nonce="
@@ -334,7 +335,7 @@ public class Oauth {
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(URL);
 			httppost.setHeader("Authorization", "Oauth"); // Set Header
-			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));///Sin HTTP
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
 			String result = convertStreamToString(entity.getContent());
@@ -406,7 +407,7 @@ public class Oauth {
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(UPLOAD_JSON_RECIPE_URL);
 			httppost.setHeader("Authorization", "Oauth"); // Set Header
-			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,HTTP.UTF_8));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
 			String result = convertStreamToString(entity.getContent());

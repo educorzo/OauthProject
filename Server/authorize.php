@@ -87,9 +87,7 @@ try {
 				}//else
 
 } catch (OAuthException $e) {
-    // No token to be verified in the request, show a page where the user can enter the token to be verified
-    // **your code here**
-    echo "ERRORR";
+    echo "ERROR";
 }
 
 ?>

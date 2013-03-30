@@ -10,14 +10,6 @@
                                         'database' => 'edjocorz'
                                         ));
     
-    // Import the Slim Framework
-   // require "slim-framework/Slim/Slim.php";
-   // \Slim\Slim::registerAutoloader();
-    
-    // Initiate API object
-    // $API will be referencing to the Slim Framework object
-    //$API = new \Slim\Slim();
-    
 
     $host="localhost"; // Host name
     $username="edjocorz";//"tooshilt"; // Mysql username

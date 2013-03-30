@@ -73,38 +73,6 @@ $API->get('/access_token', function () {
 });
 
 
-// This is a GET path to example.com/authorize
-$API->get('/authorize', function () {
-	// The current user
-	$user_id = 1;
-	
-	// Fetch the oauth store and the oauth server.
-	$store  = OAuthStore::instance();
-	$server = new OAuthServer();
-	
-	try {
-	    // Check if there is a valid request token in the current request
-	    // Returns an array with the consumer key, consumer secret, token, token secret and token type.
-	    $rs = $server->authorizeVerify();
-	
-	    if ($_SERVER['REQUEST_METHOD'] == 'GET') // CHANGE THIS TO POST
-	    {
-	        // See if the user clicked the 'allow' submit button (or whatever you choose)
-	        //$authorized = array_key_exists('allow', $_POST);
-			$authorized = true;
-
-	        // Set the request token to be authorized or not authorized
-	        // When there was a oauth_callback then this will redirect to the consumer
-	        $server->authorizeFinish($authorized, $user_id);
-	
-	        // No oauth_callback, show the user the result of the authorization
-	        // ** your code here **
-	   }
-	} catch (OAuthException $e) {
-	    // No token to be verified in the request, show a page where the user can enter the token to be verified
-	    // **your code here**
-	}
-});
 
 
 // This is a GET path to example.com/hello-to/:name
@@ -284,45 +252,6 @@ $API->post('/uploadJSON', function () {
     }
 });
 
-    // This is a GET path to example.com/authorize
-$API->get('/prueba', function () {
-              try {
-              // Check if there is a valid request token in the current request
-              // Returns an array with the consumer key, consumer secret, token, token secret and token type.
-            //  $rs = $server->authorizeVerify();
-              if ($_SERVER['REQUEST_METHOD'] == 'POST')
-              {
-          
-                    echo "HELLO";
-                }
-          else{
-                ?>
-                    <form  method='POST' action="prueba">
-                    <fieldset>
-                    <legend>Eliminar Espacios</legend>
-                    <p>
-                    <label for='cadena'>Cadena</label>
-                    <input name='cadena' type='text' />
-                    </p>
-                    <input name='enviar' value='Enviar' type='submit' />
-                    </form>
-                <?
-          }
-         /* echo "<form method='POST'>"// action='http://itks545.it.jyu.fi/edjocorz/prueba2:$servidor' method='POST'>"
-          
-          ."Username: <input type='text' name='username' size='30'><br>"
-          
-          ."Password: <input type='password' name='password' size='30'><br>"
-          
-          ."<input type='submit' value='Allow'>"
-          
-          ."</form>";*/
-          
-              } catch (OAuthException $e) {
-              // No token to be verified in the request, show a page where the user can enter the token to be verified
-              // **your code here**
-              }
-});
     
     
 // Add a missing path handler
